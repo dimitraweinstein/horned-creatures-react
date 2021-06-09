@@ -5,6 +5,7 @@ import data from './data.js';
 import Header from './Header.js';
 import ImageList from './ImageList.js';
 import Dropdown from './Dropdown.js';
+import KeywordDropdown from './KeywordDropdown.js';
 
 
 
@@ -13,7 +14,6 @@ export default class App extends Component {
   state = {
     filteredHorns: '',
     filteredKeyword: '',
-    filteredData: '',
   };
 
   handleHornChange = (e) => {
@@ -37,17 +37,18 @@ export default class App extends Component {
       
     };
 
-      const hornOptions = Array.from(new Set(filteredHorns.map(creature => creature.horns)))
-      const keywordOptions = Array.from(new Set(filteredHorns.map(creature => creature.keyword)))
+      const hornOptions = Array.from(new Set(data.map(creature => creature.horns)))
+      const keywordOptions = Array.from(new Set(data.map(creature => creature.keyword)))
 
-
+    console.log(this.state)
+    console.log(hornOptions, keywordOptions)
   return (
     <div>
       <Header />
       <Dropdown 
         options={hornOptions}
         handleHornChange={this.handleHornChange}/>
-      <Dropdown 
+      <KeywordDropdown 
         options={keywordOptions}
         handleKeywordChange={this.handleKeywordChange}/>
       <ImageList data={ filteredHorns } />
