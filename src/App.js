@@ -1,3 +1,4 @@
+/* eslint-disable no-sequences */
 import { Component } from 'react';
 import './App.css';
 import data from './data.js';
@@ -33,21 +34,21 @@ export default class App extends Component {
     if(this.state.filteredHorns) {
       filteredHorns = filteredHorns.filter( creature => Number(this.state.filteredHorns) === creature.horns)
       console.log(filteredHorns)
-    } 
+    }; 
 
     let filteredKeyword = data;
     console.log(filteredKeyword)
     if(this.state.filteredKeyword ) {
       filteredKeyword = filteredKeyword.filter( creature => this.state.filteredKeyword === creature.keyword)
       console.log(filteredHorns)
-    } 
+    };
 
     let filteredData = data;
     const objectData = Object.keys(filteredData);
     console.log(filteredData)
     if(this.state.filteredData) {
-      filteredData = filteredData.filter( booger => this.state.filteredData === booger.objectData)
-    } 
+      filteredData = objectData.filter( booger => this.state.filteredData === booger.objectData)
+    }; 
 
 
 
@@ -58,38 +59,37 @@ export default class App extends Component {
       <form>
         <label>
           <select onChange={this.handleHornChange}>
-            <option value=''>All</option>
-            <option value='1'>1</option>
-            <option value='2'>2</option>
-            <option value='3'>3</option>
-            <option value='100'>100</option>
+            <option key='0' value=''>All</option>
+            <option key='1' value='1'>1</option>
+            <option key='2' value='2'>2</option>
+            <option key='3' value='3'>3</option>
+            <option key='4' value='100'>100</option>
           </select>
       </label>
     </form>
     <form>
         <label>
           <select onChange={this.handleKeywordChange}>
-            <option value=''>All</option>
-            <option value='narwhal'>Narwhal</option>
-            <option value='rhino'>Rhino</option>
-            <option value='unicorn'>Unicorn</option>
-            <option value='unilego'>UniLego</option>
-            <option value='triceratops'>Triceratops</option>
-            <option value='markhor'>Markhor</option>
-            <option value='mouflon'>Mouflon</option>
-            <option value='addax'>Addax</option>
-            <option value='chameleon'>Chameleon</option>
-            <option value='lizard'>Lizard</option>
-            <option value='dragon'>Dragon</option>
+            <option key='5' value=''>All</option>
+            <option key='6' value='narwhal'>Narwhal</option>
+            <option key='7' value='rhino'>Rhino</option>
+            <option key='8' value='unicorn'>Unicorn</option>
+            <option key='9' value='unilego'>UniLego</option>
+            <option key='10' value='triceratops'>Triceratops</option>
+            <option key='11' value='markhor'>Markhor</option>
+            <option key='12' value='mouflon'>Mouflon</option>
+            <option key='13' value='addax'>Addax</option>
+            <option key='14' value='chameleon'>Chameleon</option>
+            <option key='15' value='lizard'>Lizard</option>
+            <option key='16' value='dragon'>Dragon</option>
           </select>
       </label>
     </form>
     <form>
         <label>
           <select onChange={this.handlefilteredDataChange}>
-            {
-              objectData.map(booger => <option> { objectData } </option> )
-            }
+          {
+              objectData.map(booger =>  <option value={objectData}>{objectData.key}</option> )  }
 
               
             {/* <option value=''>All</option>
