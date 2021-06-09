@@ -3,6 +3,7 @@ import ImageItem from './ImageItem.js';
 
 export default class ImageList extends Component {
     render() {
+        console.log(this.props.data)
         return (
             <div>
                 {this.props.data.map((image, i) => 
