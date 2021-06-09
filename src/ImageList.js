@@ -6,8 +6,8 @@ export default class ImageList extends Component {
     render() {
         return (
             <div>
-                {images.map(image => 
-                <ImageItem url={image.url}/>
+                {images.map((image, i) => 
+                <ImageItem url={image.url} key={i} />
                 )
                 }
             </div>
