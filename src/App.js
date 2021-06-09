@@ -11,6 +11,7 @@ export default class App extends Component {
   state = {
     filteredHorns: '',
     filteredKeyword: '',
+    filteredData: '',
   };
 
   handleHornChange = (e) => {
@@ -20,6 +21,11 @@ export default class App extends Component {
   handleKeywordChange = (e) => {
     this.setState({ filteredKeyword: e.target.value })
   };
+
+  handlefilteredDataChange = (e) => {
+    this.setState({ filteredData: e.target.value })
+  };
+
 
   render() {
     let filteredHorns = data;
@@ -36,11 +42,19 @@ export default class App extends Component {
       console.log(filteredHorns)
     } 
 
+    let filteredData = data;
+    const objectData = Object.keys(filteredData);
+    console.log(filteredData)
+    if(this.state.filteredData) {
+      filteredData = filteredData.filter( booger => this.state.filteredData === booger.objectData)
+    } 
+
+
 
   return (
     <div>
       <Header />
-      <ImageList data={ filteredHorns, filteredKeyword } />
+      <ImageList data={ filteredHorns, filteredKeyword, filteredData } />
       <form>
         <label>
           <select onChange={this.handleHornChange}>
@@ -67,6 +81,19 @@ export default class App extends Component {
             <option value='chameleon'>Chameleon</option>
             <option value='lizard'>Lizard</option>
             <option value='dragon'>Dragon</option>
+          </select>
+      </label>
+    </form>
+    <form>
+        <label>
+          <select onChange={this.handlefilteredDataChange}>
+            {
+              objectData.map(booger => <option> { objectData } </option> )
+            }
+
+              
+            {/* <option value=''>All</option>
+            <option value=''></option> */}
           </select>
       </label>
     </form>
